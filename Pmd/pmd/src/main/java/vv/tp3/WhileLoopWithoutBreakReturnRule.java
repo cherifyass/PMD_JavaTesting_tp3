@@ -6,21 +6,35 @@ import net.sourceforge.pmd.lang.java.rule.AbstractJavaRule;
 /**
  * Created by yassine & quentin.
  */
-public class WhileTrueFalseLoopsRule extends AbstractJavaRule {
+public class WhileLoopWithoutBreakReturnRule extends AbstractJavaRule {
 
     public Object visit(ASTWhileStatement node, Object data) {
         if(node.jjtGetNumChildren()>0) {
             // while > Expression > Primary >un seul PremaryPrefix
-            int cmpt = node.jjtGetChild(0).jjtGetChild(0).jjtGetNumChildren();
+            int count = node.jjtGetChild(0).jjtGetChild(0).jjtGetNumChildren();
             boolean cond = false;
+            boolean hasntReturnOrBreak = true;
             // while > Expression > Primary > PrimaryPrefix > Literal > BooleanLiteral
             if (node.jjtGetChild(0).jjtGetChild(0).jjtGetChild(0).jjtGetChild(0).hasDescendantOfType(ASTBooleanLiteral.class))
-                 cond = true;
+                cond = true;
 
-            if(cond && cmpt ==1) {
+            // Expression has descendant of type return or break ?
+            if (node.hasDescendantOfType(ASTReturnStatement.class) ||
+                    node.hasDescendantOfType(ASTBreakStatement.class) )
+                hasntReturnOrBreak = false;
+
+            // checking conditions
+            if(cond && count == 1 && hasntReturnOrBreak) {
                 addViolation(data, node);
             }
         }
         return super.visit(node,data);
+    }
+
+    public void infiteWhileLoopTest() {
+        int i=0;
+        while(true) {
+            i++;
+        }
     }
 }

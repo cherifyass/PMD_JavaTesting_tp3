@@ -60,4 +60,23 @@
             ]]>
         </example>
     </rule>
+
+    <rule name="WhileLoopWithoutBreakReturnRule"
+          message="Avoid using 'while(true)' or 'while(false)' without Break/return statements"
+          language="java"
+          class="vv.tp3.WhileLoopWithoutBreakReturnRule">
+        <description>
+            Avoid using 'while(true)' or 'while(false)' without Break/return statements
+        </description>
+        <priority>3</priority>
+
+        <example>
+            <![CDATA[
+                public void doSomething() {
+                while (true)
+                x++;
+                }
+            ]]>
+        </example>
+    </rule>
 </ruleset>
