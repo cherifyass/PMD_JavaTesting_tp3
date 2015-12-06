@@ -13,7 +13,7 @@
     </parent>
 
     <description>
-    <![CDATA[
+        <![CDATA[
 <p>PMD scans Java source code and looks for potential problems like:</p>
 <ul>
   <li>Possible bugs - empty try/catch/finally/switch statements</li>
@@ -25,7 +25,7 @@
 <p>You can <b><a href="http://sourceforge.net/project/showfiles.php?group_id=56262">download everything from here</a></b>, and you can get an overview of all the rules at the <a href="rules/index.html">rulesets index</a> page.</p>
 <p>PMD is <a href="integrations.html">integrated</a> with JDeveloper, Eclipse, JEdit, JBuilder, BlueJ, CodeGuide, NetBeans/Sun Java Studio Enterprise/Creator, IntelliJ IDEA, TextPad, Maven, Ant, Gel, JCreator, and Emacs.</p>
     ]]>
-  </description>
+    </description>
     <url>http://pmd.sourceforge.net/</url>
     <issueManagement>
         <url>http://sourceforge.net/p/pmd/bugs/</url>
@@ -413,7 +413,7 @@
                 <artifactId>maven-clover2-plugin</artifactId>
                 <version>2.5.1</version>
                 <configuration>
-                    <jdk>1.6</jdk>
+                    <jdk>1.7</jdk>
                     <licenseLocation>licences/clover2.license</licenseLocation>
                 </configuration>
                 <executions>
@@ -437,7 +437,7 @@
             <plugin>
                 <artifactId>maven-assembly-plugin</artifactId>
                 <configuration>
-                    
+
                     <descriptorRefs>
                         <descriptorRef>jar-with-dependencies</descriptorRef>
                     </descriptorRefs>
@@ -479,7 +479,7 @@
         </plugins>
         <pluginManagement>
             <plugins>
-                <!--This plugin's configuration is used to store Eclipse 
+                <!--This plugin's configuration is used to store Eclipse
                     m2e settings only. It has no influence on the Maven build itself. -->
                 <plugin>
                     <groupId>org.eclipse.m2e</groupId>
@@ -542,9 +542,9 @@
             </exclusions>
         </dependency>
         <dependency>
-          <groupId>com.beust</groupId>
-          <artifactId>jcommander</artifactId>
-          <version>1.27</version>
+            <groupId>com.beust</groupId>
+            <artifactId>jcommander</artifactId>
+            <version>1.27</version>
         </dependency>
         <dependency>
             <groupId>asm</groupId>
@@ -601,6 +601,35 @@
             <version>3.1</version>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-jxr-plugin</artifactId>
+            <version>2.5</version>
+            <type>maven-plugin</type>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-javadoc-plugin</artifactId>
+            <version>2.10.3</version>
+            <type>maven-plugin</type>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-project-info-reports-plugin</artifactId>
+            <version>2.8.1</version>
+            <type>maven-plugin</type>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-surefire-report-plugin</artifactId>
+            <version>2.19</version>
+            <type>maven-plugin</type>
+        </dependency>
+        <dependency>
+            <groupId>net.sourceforge.pmd</groupId>
+            <artifactId>pmd</artifactId>
+            <version>5.0.5</version>
+        </dependency>
     </dependencies>
 
     <reporting>
@@ -608,13 +637,13 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-jxr-plugin</artifactId>
-                <version>2.3</version>
+                <version>2.5</version>
             </plugin>
 
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-javadoc-plugin</artifactId>
-                <version>2.8.1</version>
+                <version>2.10.3</version>
                 <reportSets>
                     <reportSet>
                         <reports>
@@ -628,12 +657,12 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-pmd-plugin</artifactId>
-                <version>2.7.1</version>
+                <version>3.5</version>
                 <configuration>
-                    <linkXref>true</linkXref>
+                    <!--<linkXref>true</linkXref>-->
                     <sourceEncoding>utf-8</sourceEncoding>
                     <minimumTokens>100</minimumTokens>
-                    <targetJdk>1.6</targetJdk>
+                    <targetJdk>1.7</targetJdk>
                     <rulesets>
                         <!-- once the pmd plugin is migrated to pmd-5, we
                             should be able to use the current dogfood configuration -->
@@ -643,11 +672,11 @@
                 </configuration>
             </plugin>
 
-            <!-- Emma is a test coverage tools to be used instead of clover. 
-                As the mvn2 plugin is not released yet, the plugin is commented out, so you 
-                build won't fail: You can get an Emma plugin for Maven2 at http://jira.codehaus.org/browse/MOJO-762 
+            <!-- Emma is a test coverage tools to be used instead of clover.
+                As the mvn2 plugin is not released yet, the plugin is commented out, so you
+                build won't fail: You can get an Emma plugin for Maven2 at http://jira.codehaus.org/browse/MOJO-762
                 Download the tarball, extract, cd into dir, run $ mvn install. -->
-            <!-- <plugin> <groupId>org.codehaus.mojo</groupId> <artifactId>emma-maven-plugin</artifactId> 
+            <!-- <plugin> <groupId>org.codehaus.mojo</groupId> <artifactId>emma-maven-plugin</artifactId>
                 </plugin> -->
 
             <plugin>
@@ -662,7 +691,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-project-info-reports-plugin</artifactId>
-                <version>2.4</version>
+                <version>2.8.1</version>
                 <reportSets>
                     <reportSet>
                         <reports>
@@ -682,7 +711,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-report-plugin</artifactId>
-                <version>2.12</version>
+                <version>2.19</version>
             </plugin>
             <plugin>
                 <groupId>com.atlassian.maven.plugins</groupId>
@@ -784,7 +813,7 @@
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-pmd-plugin</artifactId>
-                        <version>2.7.1</version>
+                        <version>3.5</version>
                         <executions>
                             <execution>
                                 <phase>verify</phase>
@@ -796,7 +825,7 @@
                         <configuration>
                             <sourceEncoding>utf-8</sourceEncoding>
                             <minimumTokens>100</minimumTokens>
-                            <targetJdk>1.6</targetJdk>
+                            <targetJdk>1.7</targetJdk>
                             <rulesets>
                                 <!-- once the pmd plugin is migrated to pmd-5, 
                                     we should be able to use the current dogfood configuration -->
@@ -821,7 +850,7 @@
                             <configLocation>etc/checkstyle-config.xml</configLocation>
                         </configuration>
                     </plugin>
-                                  </plugins>
+                </plugins>
             </build>
         </profile>
     </profiles>
