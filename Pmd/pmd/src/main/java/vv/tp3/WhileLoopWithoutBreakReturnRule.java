@@ -31,6 +31,9 @@ public class WhileLoopWithoutBreakReturnRule extends AbstractJavaRule {
         return super.visit(node,data);
     }
 
+    /**
+     * THIS SHOULD NEVER BE CALLED !! its just for test purposes !
+     */
     public void infiteWhileLoopTest() {
         int i=0;
         while(true) {
