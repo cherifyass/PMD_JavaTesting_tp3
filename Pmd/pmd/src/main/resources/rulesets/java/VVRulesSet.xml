@@ -22,4 +22,42 @@
             ]]>
         </example>
     </rule>
+
+    <rule name="TwoNestedForLoopsRule"
+          message="Avoid using two nested 'for' statements"
+          language="java"
+          class="vv.tp3.TwoNestedForLoopsRule">
+        <description>
+            Avoid using two nested 'for' statements
+        </description>
+        <priority>3</priority>
+
+        <example>
+            <![CDATA[
+                public void doSomething() {
+                for (String str: strings)
+                    for (int i=0; i<strings.length(); i++)
+                }
+            ]]>
+        </example>
+    </rule>
+
+    <rule name="WhileTrueFalseLoopsRule"
+          message="Avoid using 'while(true)' or 'while(false)' statements"
+          language="java"
+          class="vv.tp3.WhileTrueFalseLoopsRule">
+        <description>
+            Avoid using 'while(true)' or 'while(false)' statements
+        </description>
+        <priority>3</priority>
+
+        <example>
+            <![CDATA[
+                public void doSomething() {
+                while (true)
+                x++;
+                }
+            ]]>
+        </example>
+    </rule>
 </ruleset>
