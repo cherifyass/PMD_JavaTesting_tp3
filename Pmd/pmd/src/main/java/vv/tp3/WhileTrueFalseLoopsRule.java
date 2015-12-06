@@ -19,7 +19,7 @@ public class WhileTrueFalseLoopsRule extends AbstractJavaRule {
             if (node.jjtGetChild(0).jjtGetChild(0).jjtGetChild(0).jjtGetChild(0).hasDescendantOfType(ASTBooleanLiteral.class))
                  cond = true;
 
-            if(cond) {
+            if(cond && cmpt ==1) {
                 addViolation(data, node);
             }
         }
